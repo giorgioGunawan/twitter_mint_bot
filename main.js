@@ -2,11 +2,12 @@
 // https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/quick-start
 
 const needle = require('needle');
+const {TwitterApi} = require('twitter-api-v2');
 
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
 // export BEARER_TOKEN='YOUR-TOKEN'
-const token = process.env.BEARER_TOKEN;
+const token = 'AAAAAAAAAAAAAAAAAAAAAJVIcgEAAAAApLONhyFKV7LiCLxOWlFOOqX5qC0%3DtgoGcF76SuofnuCnEq0Dukz3gsH2DDpLaxLAQYHKgrjOgbkN17';
 
 const rulesURL = 'https://api.twitter.com/2/tweets/search/stream/rules';
 const streamURL = 'https://api.twitter.com/2/tweets/search/stream';
@@ -18,12 +19,7 @@ const streamURL = 'https://api.twitter.com/2/tweets/search/stream';
 
 // Edit rules as desired below
 const rules = [{
-        'value': 'dog has:images -is:retweet',
-        'tag': 'dog pictures'
-    },
-    {
-        'value': 'cat has:images -grumpy',
-        'tag': 'cat pictures'
+        'value': '@nonfungibo',
     },
 ];
 
@@ -105,8 +101,39 @@ function streamConnect(retryAttempt) {
 
     stream.on('data', data => {
         try {
+            // Data is here
             const json = JSON.parse(data);
-            console.log(json);
+            //console.log(json);
+            var tweet = json.data.text;
+            var tweetID = json.data.id;
+            console.log(tweet);
+            console.log(tweetID);
+
+            valid = tweet.includes('@nonfungibo');
+            console.log(valid);
+
+            const client = new TwitterApi({
+                appKey: 'U5mrAh3IItPwzqRxT1yUTKJEh',
+                appSecret: 'ludzv7gpOf891QL89pC32TextaJ261FaGaC9x5VnM4w2QiqqKY',
+                accessToken: '1358956039438127105-dJnezNfBf3LCChMOQHmkwsTXDSmERy',
+                accessSecret: 'zMVwtFniwrMITpsDN0Z07Q8l0miCzWp0OfzAaDHBW3xZW',
+            });
+            if(valid){
+                if(tweet.includes('@nftprojecta')){
+                    client.v1.reply('Mint Date: 21 May 2022 2:00 AM UTC \nGoodluck!', tweetID).then((val) => {
+                        console.log("many success, good")
+                    }).catch((err) => {
+                        console.log(err)
+                    })
+                } else if (tweet.includes('@nftprojectb')){
+                    client.v1.reply('Mint Date: 27 May 2022 4:00 PM UTC \nGoodluck!', tweetID).then((val) => {
+                        console.log("many success, good")
+                    }).catch((err) => {
+                        console.log(err)
+                    })
+                }
+                
+            }
             // A successful connection resets retry count.
             retryAttempt = 0;
         } catch (e) {
