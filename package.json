@@ -17,7 +17,7 @@
   "devDependencies": {
     "typescript": "^4.6.4"
   },
-  "scripts"{
+  "scripts":{
     "start":"node main.js"
     }
 }
