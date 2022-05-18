@@ -3,11 +3,12 @@
 
 const needle = require('needle');
 const {TwitterApi} = require('twitter-api-v2');
+require('dotenv').config();
 
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
 // export BEARER_TOKEN='YOUR-TOKEN'
-const token = 'AAAAAAAAAAAAAAAAAAAAAJVIcgEAAAAApLONhyFKV7LiCLxOWlFOOqX5qC0%3DtgoGcF76SuofnuCnEq0Dukz3gsH2DDpLaxLAQYHKgrjOgbkN17';
+token = process.env.BEARER_TOKEN
 
 const rulesURL = 'https://api.twitter.com/2/tweets/search/stream/rules';
 const streamURL = 'https://api.twitter.com/2/tweets/search/stream';
@@ -113,10 +114,10 @@ function streamConnect(retryAttempt) {
             console.log(valid);
 
             const client = new TwitterApi({
-                appKey: 'U5mrAh3IItPwzqRxT1yUTKJEh',
-                appSecret: 'ludzv7gpOf891QL89pC32TextaJ261FaGaC9x5VnM4w2QiqqKY',
-                accessToken: '1358956039438127105-dJnezNfBf3LCChMOQHmkwsTXDSmERy',
-                accessSecret: 'zMVwtFniwrMITpsDN0Z07Q8l0miCzWp0OfzAaDHBW3xZW',
+                appKey: process.env.APP_KEY,
+                appSecret: process.env.APP_SECRET,
+                accessToken: process.env.ACCESS_TOKEN,
+                accessSecret: process.env.ACCESS_SECRET,
             });
             if(valid){
                 if(tweet.includes('@nftprojecta')){
