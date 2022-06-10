@@ -127,6 +127,7 @@ function streamConnect(retryAttempt) {
                 accessSecret: process.env.ACCESS_SECRET,
             });
             if(valid){
+                /*
                 const value = "@greatgoatsnft" // filler value for now
                 // TODO: here we need to do regex, first remove @mintdatebot and then find the next@
                 sql.getData(value) // => Promise { <pending> }
@@ -137,9 +138,9 @@ function streamConnect(retryAttempt) {
                     }
                     console.log(results) // => { slug: 'adding-matomo-website', read_times: 1, shares: 0, likes: 0 }
                     client.v1.reply('Mint Date: 21 May 2022 2:00 AM UTC \nGoodluck!', tweetID)
-                })
+                })*/
 
-                /*
+                
                 if(tweet.includes('@nftprojecta')){
                     client.v1.reply('Mint Date: 21 May 2022 2:00 AM UTC \nGoodluck!', tweetID).then((val) => {
                         console.log("many success, good")
@@ -171,7 +172,7 @@ function streamConnect(retryAttempt) {
                         console.log(err)
                     })
                 }
-                */
+                
             }
             // A successful connection resets retry count.
             retryAttempt = 0;
