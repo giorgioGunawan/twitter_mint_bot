@@ -3,15 +3,15 @@
 
 const needle = require('needle');
 const {TwitterApi} = require('twitter-api-v2');
-const schedule = require('node-schedule');
-const cron = require('node-cron');
-const sqlite3 = require("sqlite3").verbose();
-const sql = require("./sql");
+const schedule = require('node-schedule')
 require('dotenv').config();
-const timeElapsed = Date.now();
-const today = new Date(timeElapsed);
-console.log("[" + today + "]: Restarting now....")
+
 // recurrent intervals
+schedule.scheduleJob('thisJob','0 */1 * * *', () => {
+    schedule.cancelJob('thisJob')
+
+})
+
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
 // export BEARER_TOKEN='YOUR-TOKEN'
@@ -27,7 +27,7 @@ const streamURL = 'https://api.twitter.com/2/tweets/search/stream';
 
 // Edit rules as desired below
 const rules = [{
-        'value': '@mintdatebot',
+        'value': '@nonfungibo',
     },
 ];
 
@@ -117,7 +117,7 @@ function streamConnect(retryAttempt) {
             console.log(tweet);
             console.log(tweetID);
 
-            valid = tweet.includes('@mintdatebot');
+            valid = tweet.includes('@nonfungibo');
             console.log(valid);
 
             const client = new TwitterApi({
@@ -127,19 +127,6 @@ function streamConnect(retryAttempt) {
                 accessSecret: process.env.ACCESS_SECRET,
             });
             if(valid){
-                const value = "@greatgoatsnft" // filler value for now
-                // TODO: here we need to do regex, first remove @mintdatebot and then find the next@
-                sql.getData(value) // => Promise { <pending> }
-                .then(results=>{
-                    if (results === undefined){
-                        console.log(value, " is not in our database!")
-                        return "undefined"
-                    }
-                    console.log(results) // => { slug: 'adding-matomo-website', read_times: 1, shares: 0, likes: 0 }
-                    client.v1.reply('Mint Date: 21 May 2022 2:00 AM UTC \nGoodluck!', tweetID)
-                })
-
-                /*
                 if(tweet.includes('@nftprojecta')){
                     client.v1.reply('Mint Date: 21 May 2022 2:00 AM UTC \nGoodluck!', tweetID).then((val) => {
                         console.log("many success, good")
@@ -171,7 +158,7 @@ function streamConnect(retryAttempt) {
                         console.log(err)
                     })
                 }
-                */
+                
             }
             // A successful connection resets retry count.
             retryAttempt = 0;
