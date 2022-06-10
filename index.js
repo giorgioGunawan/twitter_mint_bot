@@ -6,7 +6,6 @@ const {TwitterApi} = require('twitter-api-v2');
 const schedule = require('node-schedule');
 const cron = require('node-cron');
 const sqlite3 = require("sqlite3").verbose();
-const sql = require("./sql");
 require('dotenv').config();
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
