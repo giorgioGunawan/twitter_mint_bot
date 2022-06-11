@@ -131,7 +131,7 @@ function streamConnect(retryAttempt) {
                 console.log(tweetWithoutOurHandle);
                 const reg = /[^@.*]+/gm;
                 const value2 = tweetWithoutOurHandle.match(reg);
-                console.log(value2.input, "<-- Here")
+                console.log(value2, "<-- Here")
                 const value = "@greatgoatsnft" // filler value for now
                 // TODO: here we need to do regex, first remove @mintdatebot and then find the next@
                 sql3.getData(value) // => Promise { <pending> }
