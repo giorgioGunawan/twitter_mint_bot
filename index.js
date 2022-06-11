@@ -110,6 +110,7 @@ function streamConnect(retryAttempt) {
     stream.on('data', data => {
         try {
             // Data is here
+            console.log(data)
             const json = JSON.parse(data);
             console.log(json);
             var tweet = json.data.text;
