@@ -128,6 +128,7 @@ function streamConnect(retryAttempt) {
             });
             if(valid){
                 var tweetWithoutOurHandle = tweet.replace('@mintdatebot', '');
+                console.log(tweetWithoutOurHandle);
                 const reg = /[^@.*]+/gm;
                 const value2 = tweetWithoutOurHandle.match(reg);
                 console.log(value2.input, "<-- Here")

@@ -10,3 +10,7 @@ let promise = sql.getData(value) // => Promise { <pending> }
     console.log(results) // => { slug: 'adding-matomo-website', read_times: 1, shares: 0, likes: 0 }
     return results
 })
+var tweetWithoutOurHandle = '@nft @klkl';
+const reg = /[^@.*]+/gm;
+const value2 = tweetWithoutOurHandle.match(reg);
+console.log(value2);
