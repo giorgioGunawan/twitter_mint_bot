@@ -111,7 +111,7 @@ function streamConnect(retryAttempt) {
         try {
             // Data is here
             const json = JSON.parse(data);
-            //console.log(json);
+            console.log(json);
             var tweet = json.data.text;
             var tweetID = json.data.id;
             console.log(tweet);
