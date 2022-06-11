@@ -132,7 +132,7 @@ function streamConnect(retryAttempt) {
                 let value;
                 for (let i = 0; i < splitTweet.length; i++) {
                     if (splitTweet[i].startsWith("@")){
-                        value = splitTweet[i];
+                        value = splitTweet[i].toLowerCase();
                         i = splitTweet.length;
                     }    
                 }
