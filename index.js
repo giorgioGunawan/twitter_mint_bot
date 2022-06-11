@@ -9,6 +9,7 @@ const sqlite3 = require("sqlite3").verbose();
 require('dotenv').config();
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
+const sql3 = require("./sql");
 console.log("[" + today + "]: Restarting now....")
 // recurrent intervals
 // The code below sets the bearer token from your environment variables
@@ -129,7 +130,7 @@ function streamConnect(retryAttempt) {
                 console.log("A")
                 const value = "@greatgoatsnft" // filler value for now
                 // TODO: here we need to do regex, first remove @mintdatebot and then find the next@
-                sql.getData(value) // => Promise { <pending> }
+                sql3.getData(value) // => Promise { <pending> }
                 .then(results=>{
                     if (results === undefined){
                         console.log(value, " is not in our database!")
