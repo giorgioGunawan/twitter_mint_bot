@@ -145,12 +145,12 @@ function streamConnect(retryAttempt) {
                 const reg = /[^@.*]+/gm;
                 const value2 = tweetWithoutOurHandle.match(reg);
                 console.log(value2, "<-- Here")
-                const value2 = "@greatgoatsnft" // filler value for now
+                const value3 = "@greatgoatsnft" // filler value for now
                 // TODO: here we need to do regex, first remove @mintdatebot and then find the next@
-                sql3.getData(value2) // => Promise { <pending> }
+                sql3.getData(value3) // => Promise { <pending> }
                 .then(results=>{
                     if (results === undefined){
-                        console.log(value2, " is not in our database!")
+                        console.log(value3, " is not in our database!")
                         return "undefined"
                     }
                     console.log(results) // => { slug: 'adding-matomo-website', read_times: 1, shares: 0, likes: 0 }
