@@ -128,7 +128,7 @@ function streamConnect(retryAttempt) {
             });
             if(valid){
                 var tweetWithoutOurHandle = tweet.replace('@mintdatebot', '');
-                const reg = /^@.*$/
+                const reg = /[^@.*]+/
                 const value2 = tweetWithoutOurHandle.match(reg);
                 console.log(value2, "<-- Here")
                 const value = "@greatgoatsnft" // filler value for now
