@@ -132,7 +132,6 @@ function streamConnect(retryAttempt) {
                 let value;
                 for (let i = 0; i < splitTweet.length; i++) {
                     if (splitTweet[i].startsWith("@")){
-                        console.log(splitTweet[i]);
                         value = splitTweet[i];
                         i = splitTweet.length;
                     }    
@@ -141,16 +140,12 @@ function streamConnect(retryAttempt) {
                 if (value == ""){
                     client.v1.reply('No NFT project tagged!', tweetID)
                 }
-                console.log(tweetWithoutOurHandle);
-                const reg = /[^@.*]+/gm;
-                const value2 = tweetWithoutOurHandle.match(reg);
-                console.log(value2, "<-- Here")
                 const value3 = "@greatgoatsnft" // filler value for now
                 // TODO: here we need to do regex, first remove @mintdatebot and then find the next@
-                sql3.getData(value3) // => Promise { <pending> }
+                sql3.getData(value) // => Promise { <pending> }
                 .then(results=>{
                     if (results === undefined){
-                        console.log(value3, " is not in our database!")
+                        console.log(value, " is not in our database!")
                         return "undefined"
                     }
                     console.log(results) // => { slug: 'adding-matomo-website', read_times: 1, shares: 0, likes: 0 }
