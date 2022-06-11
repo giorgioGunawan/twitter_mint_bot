@@ -127,7 +127,20 @@ function streamConnect(retryAttempt) {
                 accessSecret: process.env.ACCESS_SECRET,
             });
             if(valid){
-                var tweetWithoutOurHandle = tweet.replace('@mintdatebot', '');
+                const tweetWithoutOurHandle = tweet.replace('@mintdatebot', '');
+                const splitTweet = tweetWithoutOurHandle.split(" ");
+                let value;
+                for (let i = 0; i < splitTweet.length; i++) {
+                    if (splitTweet[i].startsWith("@")){
+                        console.log(splitTweet[i]);
+                        value = splitTweet[i];
+                        return;
+                    }    
+                }
+                console.log(value)
+                if (value == ""){
+                    client.v1.reply('No NFT project tagged!', tweetID)
+                }
                 console.log(tweetWithoutOurHandle);
                 const reg = /[^@.*]+/gm;
                 const value2 = tweetWithoutOurHandle.match(reg);
