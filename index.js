@@ -126,7 +126,7 @@ function streamConnect(retryAttempt) {
                 accessSecret: process.env.ACCESS_SECRET,
             });
             if(valid){
-                
+                console.log("A")
                 const value = "@greatgoatsnft" // filler value for now
                 // TODO: here we need to do regex, first remove @mintdatebot and then find the next@
                 sql.getData(value) // => Promise { <pending> }
