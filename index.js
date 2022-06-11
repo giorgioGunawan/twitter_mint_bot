@@ -134,7 +134,7 @@ function streamConnect(retryAttempt) {
                     if (splitTweet[i].startsWith("@")){
                         console.log(splitTweet[i]);
                         value = splitTweet[i];
-                        return;
+                        i = splitTweet.length;
                     }    
                 }
                 console.log(value)
