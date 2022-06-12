@@ -129,10 +129,12 @@ function streamConnect(retryAttempt) {
                 timeout: 20000
             });
 
+            /*
             username.on('data', data => {
                 console.log("A");
                 console.log(data);
             })
+            */
             //console.log(username);
 
             //console.log("isername" + username.data.username);
@@ -171,39 +173,6 @@ function streamConnect(retryAttempt) {
                     console.log(results) // => { slug: 'adding-matomo-website', read_times: 1, shares: 0, likes: 0 }
                     client.v1.reply('Mint Date: 21 May 2022 2:00 AM UTC \nGoodluck!', tweetID)
                 })
-
-                /*
-                if(tweet.includes('@nftprojecta')){
-                    client.v1.reply('Mint Date: 21 May 2022 2:00 AM UTC \nGoodluck!', tweetID).then((val) => {
-                        console.log("many success, good")
-                    }).catch((err) => {
-                        console.log(err)
-                    })
-                } else if (tweet.includes('@nftprojectb')){
-                    client.v1.reply('Mint Date: 27 May 2022 4:00 PM UTC \nGoodluck!', tweetID).then((val) => {
-                        console.log("many success, good")
-                    }).catch((err) => {
-                        console.log(err)
-                    })
-                } else if (tweet.includes('@greatgoatsnft')){
-                    client.v1.reply('Mint Date: 5 June 2022\nMint Price: 2.75 SOL\nGoodluck!', tweetID).then((val) => {
-                        console.log("many success, good")
-                    }).catch((err) => {
-                        console.log(err)
-                    })
-                } else if (tweet.includes('@GreatGoatsNFT')){
-                    client.v1.reply('Mint Date: 5 June 2022 \nMint Price: 2.75 SOL\nGoodluck!', tweetID).then((val) => {
-                        console.log("many success, good")
-                    }).catch((err) => {
-                        console.log(err)
-                    })
-                } else{
-                    client.v1.reply('Project is not on our database', tweetID).then((val) => {
-                        console.log("many success, good")
-                    }).catch((err) => {
-                        console.log(err)
-                    })
-                }*/
                 
             }
             // A successful connection resets retry count.
