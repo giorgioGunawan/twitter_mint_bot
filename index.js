@@ -18,7 +18,8 @@ console.log("[" + today + "]: Restarting now....")
 token = process.env.BEARER_TOKEN
 
 const rulesURL = 'https://api.twitter.com/2/tweets/search/stream/rules';
-const streamURL = 'https://api.twitter.com/2/tweets/search/stream';
+const streamURL = 'https://api.twitter.com/2/tweets/search/stream?expansions=author_id';
+const getUsernameURL = 'https://api.twitter.com/labs/2/users/';
 
 // this sets up two rules - the value is the search terms to match on, and the tag is an identifier that
 // will be applied to the Tweets return to show which rule they matched
@@ -116,6 +117,16 @@ function streamConnect(retryAttempt) {
             var tweetID = json.data.id;
             console.log(tweet);
             console.log(tweetID);
+
+            // get twitter user username from id
+            /*
+            const username = needle.get(getUsernameURL+, {
+                headers: {
+                    "User-Agent": "v2FilterStreamJS",
+                    "Authorization": `Bearer ${token}`
+                },
+                timeout: 20000
+            });*/
 
             valid = tweet.includes('@mintdatebot');
             console.log(valid);
