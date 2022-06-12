@@ -120,7 +120,7 @@ function streamConnect(retryAttempt) {
             console.log(tweetID);
 
             // get twitter user username from id
-            
+            console.log(getUsernameURL+user_id);
             const username = needle.get(getUsernameURL+user_id, {
                 headers: {
                     "User-Agent": "v2FilterStreamJS",
