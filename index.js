@@ -128,9 +128,14 @@ function streamConnect(retryAttempt) {
                 },
                 timeout: 20000
             });
-            console.log(username);
 
-            console.log("isername" + username.data.username);
+            username.on('data', data => {
+                console.log("A");
+                console.log(data);
+            })
+            //console.log(username);
+
+            //console.log("isername" + username.data.username);
 
             valid = tweet.includes('@mintdatebot');
             console.log(valid);
