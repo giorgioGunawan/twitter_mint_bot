@@ -128,6 +128,7 @@ function streamConnect(retryAttempt) {
                 },
                 timeout: 20000
             });
+            console.log(username);
 
             console.log("isername" + username.data.username);
 
