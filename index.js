@@ -112,21 +112,24 @@ function streamConnect(retryAttempt) {
         try {
             // Data is here
             const json = JSON.parse(data);
-            console.log(json.data);
+            console.log(json.data.author_id);
+            var user_id = json.data.author_id;
             var tweet = json.data.text;
             var tweetID = json.data.id;
             console.log(tweet);
             console.log(tweetID);
 
             // get twitter user username from id
-            /*
-            const username = needle.get(getUsernameURL+, {
+            
+            const username = needle.get(getUsernameURL+user_id, {
                 headers: {
                     "User-Agent": "v2FilterStreamJS",
                     "Authorization": `Bearer ${token}`
                 },
                 timeout: 20000
-            });*/
+            });
+
+            console.log("isername" + username);
 
             valid = tweet.includes('@mintdatebot');
             console.log(valid);
